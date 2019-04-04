@@ -16,12 +16,12 @@ install:
 before_script:
   - psql -c 'create database "deployment-exercise-test";' -U postgres # remember to change this name if you change it elsewhere (e.g. package.json)
 
-# before_deploy:
-#   - npm run build-client # make the bundle
-#   - rm -rf node_modules # omit from the tarball, since we skip cleanup
-# deploy:
-#   skip_cleanup: true # prevents travis from deleting the build
-#   provider: heroku
-#   app: YOUR-HEROKU-APP-NAME-HERE # see README
-#   api_key:
-#     secure: YOUR-***ENCRYPTED***-API-KEY-HERE
+before_deploy:
+  - npm run build-client # make the bundle
+  - rm -rf node_modules # omit from the tarball, since we skip cleanup
+deploy:
+  skip_cleanup: true # prevents travis from deleting the build
+  provider: heroku
+  app: glacial-woodland-21735 # see README
+  api_key:
+    secure: LMMhFGs4DvSKsEL4bpcPpCaRZqS+PVfC29NRyj3t7yO59ifrQwGensMJEMxDgYOIIs7W2A4tWRjYyXabE3bJnXv95K3ShC/gkGppPLwuB34r2pXJc8cSu8R98OLi1GEEx2swChIkwpRZGOIhA7U0VMDq0HQt1iLueACWlx6Y+B3lPS6iijfZCroGXa+kaHYfYcbIKRM2gjxdTdoqzboMFDhicvtbpd/fUPgAYs0vxS19aqqAVxLWC70Us01h+9PjS0XjFswf6DVPSVxBJj+65ULibH928rbiN6BwqszEDx3YiA8ekmRr8ms4qNaz6R2H442MXhbyjcDxpqzlw5ax+WxmjXiUyKvB5PDb96hwGQ6xu+d1OlN1tyCGQRuBkxJasDJCFSokVTEw5bOPBkRyFhmGJCwzB3INysaHm/5tVdda5H4ti1Ee6xzcTkDz/4N2bFPYFkDz5Mg5K10TF0LyKhydQE22x93iP5sPoNG8iiB+rf+BpfxIAuKzKtGmKRsvcScN+Oe0evbgKQZaGGFnnI/5ip0NMQ3wkoPpnhMdlJfxmgKGzHheDrfhXklh69E7fB0uYObT9dTF/Q1j8zmzSayT2X/LK6Idt1NDQ7v83d6/99nZbVWHWu6nkZIqd1EfVd8vGbRcIymjlYgun4vSvARAstpqvSlYw9TU2EmCKhQ=
